@@ -1,0 +1,23 @@
+package main
+
+import "fmt"
+
+func ContarCaracteres(str string) map[rune]int {
+	frequencia := make(map[rune]int)
+
+	for _, char := range str {
+		frequencia[char]++
+	}
+
+	return frequencia
+}
+
+func main() {
+	str := "abracadabra"
+
+	frequencia := ContarCaracteres(str)
+
+	for char, count := range frequencia {
+		fmt.Printf("%c: %d\n", char, count)
+	}
+}
