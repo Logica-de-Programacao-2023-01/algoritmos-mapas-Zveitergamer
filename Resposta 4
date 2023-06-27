@@ -1,0 +1,43 @@
+package main
+
+import (
+	"fmt"
+	"sort"
+	"strings"
+)
+
+func AgruparAnagramas(palavras []string) map[string][]string {
+	anagramas := make(map[string][]string)
+
+	for _, palavra := range palavras {
+		// Ordena os caracteres da palavra para obter a chave
+		chave := ordenarString(palavra)
+
+		// Adiciona a palavra ao grupo de anagramas correspondente
+		anagramas[chave] = append(anagramas[chave], palavra)
+	}
+
+	return anagramas
+}
+
+func ordenarString(str string) string {
+	// Converte a string para um slice de caracteres
+	chars := strings.Split(str, "")
+
+	// Ordena os caracteres em ordem alfabética
+	sort.Strings(chars)
+
+	// Retorna a string resultante
+	return strings.Join(chars, "")
+}
+
+func main() {
+	palavras := []string{"amor", "roma", "carro", "casa", "mar", "ram", "rosa"}
+
+	gruposAnagramas := AgruparAnagramas(palavras)
+
+	for chave, grupo := range gruposAnagramas {
+		fmt.Printf("Grupo: %s\n", chave)
+		fmt.Println(grupo)
+	}
+}
