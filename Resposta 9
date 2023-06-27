@@ -1,0 +1,28 @@
+package main
+
+import (
+	"fmt"
+)
+
+func Fibonacci(n int) map[int]int {
+	fib := make(map[int]int)
+
+	for i := 0; i <= n; i++ {
+		if i < 2 {
+			fib[i] = i
+		} else {
+			fib[i] = fib[i-1] + fib[i-2]
+		}
+	}
+
+	return fib
+}
+
+func main() {
+	n := 10
+	sequencia := Fibonacci(n)
+
+	for indice, valor := range sequencia {
+		fmt.Printf("Fibonacci(%d) = %d\n", indice, valor)
+	}
+}
