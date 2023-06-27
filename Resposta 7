@@ -1,0 +1,32 @@
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func ContarLetrasPorPalavra(frase string) map[string]map[rune]int {
+	palavras := strings.Fields(frase)
+	resultado := make(map[string]map[rune]int)
+
+	for _, palavra := range palavras {
+		contagem := make(map[rune]int)
+
+		for _, char := range palavra {
+			contagem[char]++
+		}
+
+		resultado[palavra] = contagem
+	}
+
+	return resultado
+}
+
+func main() {
+	frase := "Olá mundo, seja bem-vindo!"
+	resultado := ContarLetrasPorPalavra(frase)
+
+	for palavra, contagem := range resultado {
+		fmt.Printf("%s: %+v\n", palavra, contagem)
+	}
+}
