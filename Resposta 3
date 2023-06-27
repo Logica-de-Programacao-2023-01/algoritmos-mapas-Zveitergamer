@@ -1,0 +1,25 @@
+package main
+
+import "fmt"
+
+func SomaValores(mapa map[string]int) int {
+	soma := 0
+
+	for _, valor := range mapa {
+		soma += valor
+	}
+
+	return soma
+}
+
+func main() {
+	mapa := map[string]int{
+		"valor1": 10,
+		"valor2": 20,
+		"valor3": 30,
+	}
+
+	resultado := SomaValores(mapa)
+
+	fmt.Printf("Soma dos valores: %d\n", resultado)
+}
